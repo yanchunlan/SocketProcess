@@ -1,0 +1,73 @@
+#ps
+
+kill -s 9 1827 
+其中-s  9  制定了传递给进程的信号是9，即强制。尽快终止进程
+
+
+为什么需要进程守护：
+当app被杀死之后，某些关键信息不能及时的传达给用户，降低了用户体验（就如聊天等）
+
+
+java实现双进程的原理：
+androidminfast.xml 定义的android:progress=“：remote” 字段
+很多手机厂商会修改相关解析xml的源码，导致进程开不起来，
+适配率低，只能普及20-30%的手机
+
+
+java socket 实列：
+：Socketservice   and   client
+
+
+
+
+
+linux中socket的函数解释:  #include <sys/socket.h>
+
+1.	int socket(int domain, int type, int protocol);  
+
+socket函数类似于open，用来打开一个网络连接，如果成功则返回一个非负整数值,失败，则返回-1
+类似网络文件描述符,简称sockfd（int类型），之后我们操作这个网络连接都通过这个网络文件描述符。
+
+dimain：域，网络域，网络地址范围（IPV4或IPV6等）,也就是协议簇(
+AF_INET　　　　  ip
+AF_INET6　　　　ipv6
+AF_PACKET         packet         低级数据包接口)
+type：指定套接字类型：SOCK_STREAM（TCP网络）、SOCK_DGRAM（UDP）、SOCK_SEQPACKET
+protocol:指定协议，如果指定0，表示使用默认的协议(
+IPPROTO_IP　　　　   IP传输协议
+IPPROTO_TCP　　　   TCP传输协议
+IPPROTO_UDP　　     UDP协议
+IPPROTO_SCTP　　    SCTP传输协议
+IPPROTO_ICMP          ICMP协议
+IPPROTO_IGMP　　    IGMP协议)
+
+
+2.	int connect(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
+
+客户端通过connect函数与服务端连接，进行通信。连接成功，返回0，连接失败，返回-1
+
+sockfd(客户端自己创建的sock)
+addr(服务端地址族、服务端IP地址、服务端端口号)
+addrlen(服务端地址字节长度)
+
+3.	int bind(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
+
+服务端套接字绑定自己的IP地址与端口号，客户端那边可以不写，内核会给它分配一个临时的端口，
+绑定成功，返回0，失败返回-1
+
+sockfd：服务器或者客户端自己创建的socket
+addr:服务器或者客户端自己的地址信息(协议族、IP、端口号)
+addrlen：服务器或者客户端自己的地址信息的长度
+
+
+
+javasocket连接的时候，服务器启动时需压迫绑定地址（ip+端口号），用于提供服务，客户端通过它连接服务器
+客户端不用指定，由系统自动分配一个端口号和自身的ip地址组合
+这就是为什么服务端在listen之前会调用bind(),客户端就不会调用，二是在connect时由系统自动随即生出一个
+
+
+
+
+
+
+

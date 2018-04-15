@@ -20,12 +20,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <linux/signal.h>
-#define LOG_TAG "tuch"
-#define LOGE(...) _android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
+#define LOG_TAG "native_lib"
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
-void child_do_work();
 int child_create_channel();
 
 void child_listen_msg();
 
-#endif //SOCKETPROCESS_NATIVE_LIB_H
+//#endif //SOCKETPROCESS_NATIVE_LIB_H

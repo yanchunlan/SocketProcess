@@ -23,7 +23,6 @@ public class ProcessService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-
         return null;
     }
 
@@ -31,23 +30,19 @@ public class ProcessService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        Watcher watcher = new Watcher();
-        watcher.createWatcher(String.valueOf(Process.myUid()));
+//        Watcher watcher = new Watcher();
+//        watcher.createWatcher(String.valueOf(Process.myUid()));
+//        watcher.connectMonitor();
 
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-i++;
                 Log.i(TAG, "run: 服务开启" + i);
-                i++;         }
+                i++;
+            }
         }, 0, 1000 * 3);
 
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        return super.onStartCommand(intent, flags, startId);
     }
 
 
