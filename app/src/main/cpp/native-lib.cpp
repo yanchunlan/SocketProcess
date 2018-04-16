@@ -1,11 +1,31 @@
-#include <jni.h>
-#include <string>
 
 
+
+
+#ifndef SOCKETPROCESS_NATIVE_LIB_H
+#define SOCKETPROCESS_NATIVE_LIB_H
+
+#endif // ADV
+
+#include <sys/select.h>
 #include <unistd.h>
 #include <sys/socket.h>
+#include <pthread.h>
+#include <signal.h>
+#include <sys/wait.h>
+#include <android/log.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <errno.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <linux/signal.h>
+#include <jni.h>
+#include <string>
 #include <string.h>
-#include "native_lib.h"
+
+#define LOG_TAG "native_lib"
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 //子进程有权限访问父进程的私有目录,在此建立跨进程通信的套接字文件
 const char *PATH = "/data/data/com.example.yanchunlan.socketprocess/my.sock";
@@ -145,6 +165,4 @@ Java_com_example_yanchunlan_socketprocess_Watcher_connectMonitor(JNIEnv *env, jo
         LOGE("连接成功");
         break;
     }
-
-
 }

@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private void SocketClient() {
         try {
+            /**
+             * 客户端
+             * 1.等待连接
+             * 2.读取消息
+             */
             Socket socket = new Socket("192.168.1.115", 5209);
             // input
             InputStream inputStream = socket.getInputStream();
@@ -47,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -61,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
      */
     private void SocketServer() {
         try {
+            /**
+             * 服务端
+             * 1. 创建ServerSocket对象并绑定监听端口
+             * 2. 通过accept()方法监听客户端的请求
+             * 3. 建立连接后，通过输入输出流读取客户端发生的请求信息
+             * 4. 通过输入流向客户端发送请求信息
+             * 5. 关闭连接
+             */
             ServerSocket server = new ServerSocket(5209);
             Socket socket = server.accept();
 
