@@ -1,7 +1,4 @@
 
-
-
-
 #ifndef SOCKETPROCESS_NATIVE_LIB_H
 #define SOCKETPROCESS_NATIVE_LIB_H
 
@@ -43,7 +40,7 @@ int child_create_channel() {
         return listenfd;
     }
 
-    unlink(PATH); // 情况上次的链接，防止重复
+    unlink(PATH); // 清空上次的链接，防止重复
 
     struct sockaddr_un addr;
     // 清空结构体内存

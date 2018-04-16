@@ -30,9 +30,9 @@ public class ProcessService extends Service {
     public void onCreate() {
         super.onCreate();
 
-//        Watcher watcher = new Watcher();
-//        watcher.createWatcher(String.valueOf(Process.myUid()));
-//        watcher.connectMonitor();
+        Watcher watcher = new Watcher();
+        watcher.createWatcher(String.valueOf(Process.myUid()));
+        watcher.connectMonitor();
 
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
